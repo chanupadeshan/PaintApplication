@@ -10,6 +10,10 @@ root.resizable(False, False)  # Width, height of the window can't be changed
 
 root.title("Paint Application")
 
+
+topic_label = ttk.Label(root, text="Paint Application", font=("Helvetica", 20, "bold"), foreground="blue")
+topic_label.pack()  
+
 canvas = tk.Canvas(root,bg="white",height=500,width=500)
 canvas.pack()
 
