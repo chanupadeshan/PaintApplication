@@ -10,9 +10,18 @@ root.resizable(False, False)  # Width, height of the window can't be changed
 
 root.title("Paint Application")
 
+color_pick_value = tk.StringVar()
 
 topic_label = ttk.Label(root, text="Paint Application", font=("Helvetica", 20, "bold"), foreground="blue")
-topic_label.pack()  
+topic_label.pack(pady=10)  
+
+color_label = ttk.Label(root,text="Choose color:",font=(12))
+color_label.pack()
+
+color_pick = ttk.Combobox(root,values=["red","blue","green","yellow","black","white"],font=(12),textvariable=color_pick_value)
+color_pick.pack()
+
+
 
 canvas = tk.Canvas(root,bg="white",height=500,width=500)
 canvas.pack()
@@ -20,7 +29,7 @@ canvas.pack()
 def draw(event):
     x=event.x
     y=event.y
-    canvas.create_oval(x,y,x,y,width=5)
+    canvas.create_oval(x,y,x,y,width=5,fill=color_pick_value.get())
 canvas.bind("<Motion>", draw)
 
 
