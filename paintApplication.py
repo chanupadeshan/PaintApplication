@@ -34,20 +34,24 @@ size_label.pack()
 size_enter = ttk.Entry(root, font=(12), width=10)
 size_enter.pack(pady=10)
 
+#create frames for the button
+button_frame = ttk.Frame(root)
+button_frame.pack()
+
 def update_size():
     size_pick_value.set(int(size_enter.get()))
 
 #crate button for the size select
-enter_button = ttk.Button(root, text="Enter", command=update_size)
-enter_button.pack(pady=2)
+enter_button = ttk.Button(button_frame, text="Enter", command=update_size)
+enter_button.pack(side=tk.LEFT,padx=10)
 
 #crate button for the clear
 def clear():
     canvas.delete("all")
 
 #crate button for the clear
-clear_button = ttk.Button(root, text="Clear", command=clear)
-clear_button.pack(pady=5)
+clear_button = ttk.Button(button_frame, text="Clear", command=clear)
+clear_button.pack(side=tk.LEFT,padx=10)
 
 #crate canvas 
 canvas = tk.Canvas(root, bg="white", height=500, width=900)
