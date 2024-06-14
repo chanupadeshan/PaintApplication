@@ -21,7 +21,11 @@ color_label.pack()
 color_pick = ttk.Combobox(root,values=["red","blue","green","yellow","black","white"],font=(12),textvariable=color_pick_value)
 color_pick.pack()
 
+size_label =ttk.Label(root,text="Choose size:",font=(12))
+size_label.pack()
 
+size_enter =ttk.Entry(root,font=(12),width=10,background="white")
+size_enter.pack()
 
 canvas = tk.Canvas(root,bg="white",height=500,width=500)
 canvas.pack()
