@@ -15,7 +15,7 @@ size_pick_value = tk.IntVar(value=5)  # Default size
 
 #Crate widgets
 #crate label for the topic
-topic_label = ttk.Label(root, text="Paint Application", font=("Helvetica", 20, "bold"), foreground="blue")
+topic_label = ttk.Label(root, text="Paint Application", font=("Helvetica", 50, "bold"), foreground="blue")
 topic_label.pack(pady=10)  
 
 #create label for the color select
@@ -24,7 +24,7 @@ color_label.pack()
 
 #crate combobox for the color select
 color_pick = ttk.Combobox(root, values=["red", "blue", "green", "yellow", "black"], font=(12), textvariable=color_pick_value)
-color_pick.pack()
+color_pick.pack(pady=10)
 
 #create label for the size select
 size_label = ttk.Label(root, text="Choose size:", font=(12))
@@ -32,14 +32,14 @@ size_label.pack()
 
 #crate entry for the size select
 size_enter = ttk.Entry(root, font=(12), width=10)
-size_enter.pack()
+size_enter.pack(pady=10)
 
 def update_size():
     size_pick_value.set(int(size_enter.get()))
 
 #crate button for the size select
 enter_button = ttk.Button(root, text="Enter", command=update_size)
-enter_button.pack()
+enter_button.pack(pady=2)
 
 #crate button for the clear
 def clear():
@@ -47,11 +47,11 @@ def clear():
 
 #crate button for the clear
 clear_button = ttk.Button(root, text="Clear", command=clear)
-clear_button.pack()
+clear_button.pack(pady=5)
 
 #crate canvas 
-canvas = tk.Canvas(root, bg="white", height=500, width=500)
-canvas.pack()
+canvas = tk.Canvas(root, bg="white", height=500, width=900)
+canvas.pack(pady=10)
 
 # Function to draw on the canvas
 def draw(event):
