@@ -27,6 +27,12 @@ size_label.pack()
 size_enter =ttk.Entry(root,font=(12),width=10,background="white")
 size_enter.pack()
 
+enter_button = ttk.Button(root,text="Enter")
+enter_button.pack()
+
+clear_button = ttk.Button(root,text="Clear")
+clear_button.pack()
+
 canvas = tk.Canvas(root,bg="white",height=500,width=500)
 canvas.pack()
 
