@@ -13,51 +13,56 @@ root.title("Paint Application")
 color_pick_value = tk.StringVar(value="black")  # Default color
 size_pick_value = tk.IntVar(value=5)  # Default size
 
-#Crate widgets
-#crate label for the topic
-topic_label = ttk.Label(root, text="Paint Application", font=("Helvetica", 50, "bold"), foreground="blue",background="#D3D3D3")
-topic_label.pack(side=tk.TOP,pady=10)  
+# Create widgets
+# Create label for the topic
+topic_label = ttk.Label(root, text="Paint Application", font=("Helvetica", 50, "bold"), foreground="blue", background="#D3D3D3")
+topic_label.pack(side=tk.TOP, pady=10)
 
-#create label for the color select
-color_label = ttk.Label(root, text="Choose color:", font=(12),background="#D3D3D3",foreground="#12205c")
+# Create label for the color select
+color_label = ttk.Label(root, text="Choose color:", font=(12), background="#D3D3D3", foreground="#12205c")
 color_label.pack()
 
-#crate combobox for the color select
-color_pick = ttk.Combobox(root, values=["red", "blue", "green", "yellow", "black"], font=(12),background="#D3D3D3")
+# Create combobox for the color select
+color_pick = ttk.Combobox(root, values=["red", "blue", "green", "yellow", "black"], font=(12), textvariable=color_pick_value)
 color_pick.pack(pady=10)
+color_pick.current(4)  # Set default selection to "black"
 
-#create label for the size select
-size_label = ttk.Label(root, text="Choose size:", font=(12),background="#D3D3D3",foreground="#12205c")
+# Create label for the size select
+size_label = ttk.Label(root, text="Choose size:", font=(12), background="#D3D3D3", foreground="#12205c")
 size_label.pack()
 
-#crate entry for the size select
-size_enter = ttk.Entry(root, font=(12), width=10,background="#D3D3D3")
+# Create entry for the size select
+size_enter = ttk.Entry(root, font=(12), width=10, textvariable=size_pick_value)
 size_enter.pack(pady=10)
 
-#create frames for the button
+# Create frames for the button
 button_frame = tk.Frame(root, bg="#D3D3D3")
 button_frame.pack(pady=10)
 
 def update_size_and_color():
-    size_pick_value.set(int(size_enter.get()))
-    color_pick_value.set(color_pick.get())
+    try:
+        size = int(size_enter.get())
+        size_pick_value.set(size)
+        color_pick_value.set(color_pick.get())
+    except ValueError:
+        size_pick_value.set(5)  # Default size if invalid entry
 
 style = ttk.Style()
-style.configure('Custom.TButton', background='#D3D3D3',foreground='#12205c')
+style.configure('Custom.TButton', background='#D3D3D3', foreground='#12205c')
 
-#crate button for the size select
-enter_button = ttk.Button(button_frame, text="Enter", command=update_size_and_color,style='Custom.TButton')
-enter_button.pack(side=tk.LEFT,padx=10)
+# Create button for the size select
+enter_button = ttk.Button(button_frame, text="Enter", command=update_size_and_color, style='Custom.TButton')
+enter_button.pack(side=tk.LEFT, padx=10)
 
-#crate button for the clear
+# Create button for the clear
 def clear():
     canvas.delete("all")
 
-#crate button for the clear
-clear_button = ttk.Button(button_frame, text="Clear", command=clear,style='Custom.TButton')
-clear_button.pack(side=tk.RIGHT,padx=10)
+# Create button for the clear
+clear_button = ttk.Button(button_frame, text="Clear", command=clear, style='Custom.TButton')
+clear_button.pack(side=tk.RIGHT, padx=10)
 
-#crate canvas 
+# Create canvas 
 canvas = tk.Canvas(root, bg="white", height=450, width=900)
 canvas.pack(pady=10)
 
